@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    $('#valordoFrete').mask("###.##,00");
+    $('#margem').mask('###,##', {reverse: true});
+
     const valordoFrete = document.getElementById('valordoFrete');
     const margem = document.getElementById('margem');
     const estadoOrigem = document.getElementById('estadoSaida');
@@ -20,27 +23,28 @@ document.addEventListener('DOMContentLoaded', function() {
         return icmsTaxas[estadoOrigem][estadoDestino]
     }
 
-// Frete (PJ) 
-function calcularFreteParaPJ(valorFrete, margem, taxaICMS) {
-    const totalPorcentagem = margem + taxaICMS
-    const descontoTotal = valorFrete * (totalPorcentagem / 100)
-    return valorFrete - descontoTotal
-}
+    // Frete (PJ) 
+    function calcularFreteParaPJ(valorFrete, margem, taxaICMS) {
+        const totalPorcentagem = margem + taxaICMS
+        const descontoTotal = valorFrete * (totalPorcentagem / 100)
+        return valorFrete - descontoTotal
+    }
 
-// Frete (PF) 
-function calcularFreteParaPF(valorFrete, margem, taxaICMS) {
-    const totalPorcentagem = margem + taxaICMS + 3.25 
-    const descontoTotal = valorFrete * (totalPorcentagem / 100)
-    return valorFrete - descontoTotal
-}
-
+    // Frete (PF) 
+    function calcularFreteParaPF(valorFrete, margem, taxaICMS) {
+        const totalPorcentagem = margem + taxaICMS + 3.25 
+        const descontoTotal = valorFrete * (totalPorcentagem / 100)
+        return valorFrete - descontoTotal
+    }
 
     // Adicionando um evento de clique ao botão de calcular
     calcular.addEventListener('click', function() {
-        const valorFrete = parseFloat(valordoFrete.value)
-        const margemValor = parseFloat(margem.value)
-        const estadoOrigemValor = estadoOrigem.value
-        const estadoDestinoValor = estadoDestino.value
+        // Remova pontos e vírgulas do valor antes de converter para número
+        const valorFrete = parseFloat(valordoFrete.value.replace(/\./g, '').replace(',', '.'));
+
+        const margemValor = parseFloat(margem.value);
+        const estadoOrigemValor = estadoOrigem.value;
+        const estadoDestinoValor = estadoDestino.value;     
 
         // Tratamentos
         if (isNaN(valorFrete) || isNaN(margemValor) || estadoOrigemValor === '' || estadoDestinoValor === '') {
@@ -52,12 +56,11 @@ function calcularFreteParaPF(valorFrete, margem, taxaICMS) {
             alert('Taxa de ICMS não encontrada para a combinação de estados selecionados.')
             return
         }
-        //
 
-        const taxaICMS = obterTaxaICMS(estadoOrigemValor, estadoDestinoValor)
+        const taxaICMS = obterTaxaICMS(estadoOrigemValor, estadoDestinoValor);
 
-        const freteParaPJ = calcularFreteParaPJ(valorFrete, margemValor, taxaICMS)
-        const freteParaPF = calcularFreteParaPF(valorFrete, margemValor, taxaICMS)
+        const freteParaPJ = calcularFreteParaPJ(valorFrete, margemValor, taxaICMS);
+        const freteParaPF = calcularFreteParaPF(valorFrete, margemValor, taxaICMS);
 
         // Resultados
         freteParaPJField.value = freteParaPJ.toFixed(2);
