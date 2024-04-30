@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Tabela ICMS
     const icmsTaxas = {
-        SC: { MT: 7, PR: 12, SC: 0, MS: 7, GO: 7, MG: 12, SP: 12, RS: 12 },
+        SC: { MT: 7, PR: 12, SC: 17, MS: 7, GO: 7, MG: 12, SP: 12, RS: 12 },
         PR: { MT: 7, PR: 0, SC: 12, MS: 7, GO: 7, MG: 12, SP: 12, RS: 12 },
         MT: { MT: 0, PR: 12, SC: 12, MS: 12, GO: 12, MG: 12, SP: 12, RS: 12}
     }

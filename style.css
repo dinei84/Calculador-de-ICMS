@@ -15,7 +15,7 @@ body{
 
 main{
     width: 300px;
-    height: 450px;
+    height: 400px;
     background-color: white;
     margin: auto;
     margin-top: 25px;
@@ -98,6 +98,17 @@ input{
     border-radius: 15px;
     background-color: rgb(67, 16, 35);
     color: white;
+    font-weight: bold;
+}
+.box_datalist #estadoSaida{
+    width: 135px;
+    height: 30px;
+    margin-left: 6px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: white;
+    color: rgb(67, 16, 35);
+    font-weight: bold;
 }
 .box_datalist #freteParaPJ{
     margin-left: 22px;

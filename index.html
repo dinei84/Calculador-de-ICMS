@@ -22,16 +22,14 @@
             <label for="margem">Margem: </label>
             <input id="margem" type="number" value="10">
         </div>
-        <div class="box_datalist">
-           <p>
-            <label for="estadoSaida">Estado de Saída: </label>
-            <input id="estadoSaida" type="text" name="estadoSaida" list="esaida">
-            <datalist id="esaida">
-                <option value="SC" selected >Santa Catarina</option>
+        <div class="box_datalist">           
+            <label for="estadoSaida">Estado de Saída: </label>            
+            <select name="estadoSaida" id="estadoSaida">
+                <option value="SC">Santa Catarina</option>
                 <option value="PR">Paraná</option>
                 <option value="MT">Mato Grosso</option>
-            </datalist>
-           </p>
+            </select>
+           
         </div>
         <div class="box_datalist">
             <label for="estadoDestino">Estado Destino: </label>
