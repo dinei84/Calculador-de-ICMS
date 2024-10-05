@@ -123,9 +123,12 @@ input{
     width: 85px;
     height: 40px;
     margin-left: 47.5%;
-    margin-top: 11px;
-    padding-top: 15px;
+    margin-top: 10px;
+    padding-top: 5px;
     cursor: pointer;
+    font-size: larger;
+    font-weight: bolder;
+    color: red;
 }
 
 .imgback {
@@ -135,3 +138,4 @@ input{
     padding-top: 4px;
     cursor: pointer;
 }
+
