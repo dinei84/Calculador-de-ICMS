@@ -10,17 +10,17 @@
 <body>
     <header>
         <h1>Calculadora de ICMS</h1>
-        <P>Preencha todos os campos com os dados do carregamento</P>
+        <p>Preencha todos os campos com os dados do carregamento</p>
     </header>
 
     <main>
         <div class="box_datalist">
             <label for="valordoFrete">Valor do Frete: R$</label>
-            <input id="valordoFrete" type="number">
+            <input id="valordoFrete" type="text">
         </div>
         <div class="box_datalist">
             <label for="margem">Margem: </label>
-            <input id="margem" type="number" value="10">
+            <input id="margem" type="text" value="10">
         </div>
         <div class="box_datalist">           
             <label for="estadoSaida">Estado de Saída: </label>            
@@ -29,13 +29,12 @@
                 <option value="PR">Paraná</option>
                 <option value="MT">Mato Grosso</option>
             </select>
-           
         </div>
         <div class="box_datalist">
             <label for="estadoDestino">Estado Destino: </label>
             <select id="estadoDestino" name="estado">
                 <optgroup id="maisComuns" label="Mais Comuns">
-                    <option value="MT" selected >Mato Grosso</option>
+                    <option value="MT" selected>Mato Grosso</option>
                     <option value="MS">Mato Grosso do Sul</option>
                     <option value="SP">São Paulo</option>
                     <option value="PR">Paraná</option>
@@ -66,31 +65,31 @@
                     <option value="TO">Tocantins</option>
                 </optgroup>
             </select>
-        </div>  
-    </div>
-    <div class="botoes">
-        <div>
-            <button id="calcular">Calcular</button>
         </div>
-        <div>
-            <button id="limpar">Limpar</button>
-        </div>
-    </div>     
+        <div class="botoes">
+            <div>
+                <button id="calcular">Calcular</button>
+            </div>
+            <div>
+                <button id="limpar">Limpar</button>
+            </div>
+        </div>     
         <div class="box_datalist">
             <label for="freteParaPJ">Frete Para PJ = </label>
-            <input id="freteParaPJ" type="number" readonly>
+            <input id="freteParaPJ" type="text" readonly>
         </div>
         <div class="box_datalist">
             <label for="freteParaPF">Frete Para PF = </label>
-            <input id="freteParaPF" type="number" readonly>       
+            <input id="freteParaPF" type="text" readonly>
+        </div>
     </main>
 
     <footer>
-
+        <!-- Conteúdo do footer, se necessário -->
     </footer>
 
-    <script src="calculo.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="calculo.js"></script>
 </body>
 </html>
