@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="accets/icons8-calculator-64.png" type="image/x-icon">
-    <title>Calculadora de ICMS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="calculadoraicms.css" />
+    <link rel="stylesheet" href="../../../menu.css"> <title>Calculadora de ICMS</title>
 </head>
 <body>
     <header>
         <h1>Calculadora de ICMS</h1>
         <p>Preencha todos os campos com os dados do carregamento</p>
     </header>
-
     <main>
         <div class="box_datalist">
             <label for="valordoFrete">Valor do Frete: R$</label>
-            <input id="valordoFrete" type="text">
+            <input id="valordoFrete" type="text" />
         </div>
         <div class="box_datalist">
-            <label for="margem">Margem: </label>
-            <input id="margem" type="text" value="10">
+            <label for="margem">Margem (%):</label>
+            <input id="margem" type="number" value="10" min="0" max="100" />
         </div>
-        <div class="box_datalist">           
-            <label for="estadoSaida">Estado de Saída: </label>            
-            <select name="estadoSaida" id="estadoSaida">
-                <option value="SC">Santa Catarina</option>
-                <option value="PR">Paraná</option>
-                <option value="MT">Mato Grosso</option>
+        <div class="box_datalist">
+            <label for="estadoSaida">Estado de Saída:</label>
+            <select id="estadoSaida">
+                <option value="SC">SC</option>
+                <option value="PR">PR</option>
+                <option value="MT">MT</option>
             </select>
         </div>
         <div class="box_datalist">
-            <label for="estadoDestino">Estado Destino: </label>
-            <select id="estadoDestino" name="estado">
-                <optgroup id="maisComuns" label="Mais Comuns">
-                    <option value="MT" selected>Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="PR">Paraná</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="GO">Goiás</option>
-                    <option value="SC">Santa Catarina</option>
-                </optgroup>
-                <optgroup id="menosComuns" label="Menos Comuns">
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="CE">Ceará</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="BA">Bahia</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="AP">Amapá</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </optgroup>
+            <label for="estadoDestino">Destino Final:</label>
+            <select id="estadoDestino">
+                <option value="SC">SC</option>
+                <option value="PR">PR</option>
+                <option value="MT">MT</option>
             </select>
+        </div>
+        <div class="box_datalist">
+            <label for="trocadenfe">Troca de NFe</label>
+            <input type="checkbox" id="trocadenfe" />
+        </div>
+        <div id="trocaCampos" style="display:none;">
+            <div class="box_datalist">
+                <label for="estadoDestinoTroca">Estado de Destino da Troca</label>
+                <select name="estadoDestinoTroca" id="estadoDestinoTroca">
+                    <option value="SC">SC</option>
+                    <option value="PR">PR</option>
+                    <option value="MT">MT</option>
+                </select>
+            </div>
+            <div class="box_datalist">
+                <label for="porcentagemtroca">Porcentagem da Troca (%)</label>
+                <input type="number" id="porcentagemtroca" min="0" max="100" value="70" />
+            </div>
+            <div class="box_datalist">
+                <label for="valorPrimeiraPerna">Frete Empresa 1° Perna: R$</label>
+                <input id="valorPrimeiraPerna" type="text" readonly />
+            </div>
+            <div class="box_datalist">
+                <label for="valorSegundaPerna">Frete Empresa 2° Perna: R$</label>
+                <input id="valorSegundaPerna" type="text" readonly />
+            </div>
+            
         </div>
         <div class="botoes">
-            <div>
-                <button id="calcular">Calcular</button>
-            </div>
-            <div>
-                <button id="limpar">Limpar</button>
-            </div>
-        </div>     
-        <div class="box_datalist">
-            <label for="freteParaPJ">Frete Para PJ = </label>
-            <input id="freteParaPJ" type="text" readonly>
+            <button id="calcular">Calcular</button>
+            <button id="limpar">Limpar</button>
         </div>
         <div class="box_datalist">
-            <label for="freteParaPF">Frete Para PF = </label>
-            <input id="freteParaPF" type="text" readonly>
+            <label for="taxaICMSField">Taxa de ICMS (%)</label>
+            <input type="text" id="taxaICMSField" readonly>
+        </div>
+        <div id="resultados">
+          <div class="box_datalist" id="boxFreteParaPJ"> <label for="freteParaPJ">Frete Para PJ:R$</label>
+              <input id="freteParaPJ" type="text" readonly />
+          </div>
+          <div class="box_datalist" id="boxFreteParaPF"> <label for="freteParaPF">Frete Para PF: R$</label>
+              <input id="freteParaPF" type="text" readonly />
+          </div>
+      </div>
+
+      
+        <div id="trocaCampos2" style="display: none;">
+            <div class="box_datalist">
+                <label for="freteParaPJ2">Frete Para PJ 2° Perna: R$</label>
+                <input id="freteParaPJ2" type="text" readonly />
+            </div>
+            <div class="box_datalist">
+                <label for="freteParaPF2">Frete Para PF 2° Perna: R$</label>
+                <input id="freteParaPF2" type="text" readonly />
+            </div>
         </div>
     </main>
-
-    <footer>
-        <div class="buttonback">
-            <a href="https://interface-kappa-weld.vercel.app/">            
-                <input type="button" value="VOLTAR" class="bot3" id="buttonback">
-            </a>
-        </div>
-    </footer>
-
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     <script src="calculo.js"></script>
